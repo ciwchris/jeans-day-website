@@ -21,7 +21,7 @@ class Entry
 	end
 end
 
-class JeanDays < Sinatra
+class JeanDays < Sinatra::Base
 	get '/jeansdays.json' do
 		content_type :json
 
