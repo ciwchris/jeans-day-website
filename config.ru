@@ -1,5 +1,7 @@
-require 'rubygems'
-require 'jeans_day/app'
+require 'sinatra'
 
+get '/' do
+	"Hello"	
+end
 
 run Sinatra::Application
