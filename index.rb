@@ -24,8 +24,9 @@ end
 get '/jeansdays.json' do
 	content_type :json
 
-#doc = Nokogiri::XML(open("http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic"))
-	doc = Nokogiri::XML(open("test.xml")).css("entry")
+doc = Nokogiri::XML(open("http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic")).css("entry")
+
+#	doc = Nokogiri::XML(open("test.xml")).css("entry")
 	entries = []
 	doc.each do |item|
 		title = item.at_css("title").content
