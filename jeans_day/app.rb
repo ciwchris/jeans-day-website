@@ -2,7 +2,7 @@
 #Calendar ID: 6bkqn7r85goj12qe3ps1e2nlug@group.calendar.google.com
 
 require 'rubygems'
-require 'sinatra/base'
+require 'sinatra'
 require 'nokogiri'
 require 'open-uri'
 require 'json'
