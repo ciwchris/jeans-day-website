@@ -1,0 +1,12 @@
+
+			   $.ajax({
+			      type: "get",
+			      url: "jeansdays.json",
+			      dataType: "json",
+			      success: function(data) {
+			           alert(data);
+			       },
+			       error: function() {
+			           alert("Sorry, couldn't make it happen");
+			       }
+			    });

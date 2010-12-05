@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/" xmlns:gCal="http://schemas.google.com/gCal/2005" xmlns:gd="http://schemas.google.com/g/2005">
+  <id>http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic</id>
+  <updated>2010-11-29T23:52:35.000Z</updated>
+  <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+  <title type="text">Jeans Day</title>
+  <subtitle type="text">STCU Jeans Days</subtitle>
+  <link rel="alternate" type="text/html" href="http://www.google.com/calendar/embed?src=6bkqn7r85goj12qe3ps1e2nlug@group.calendar.google.com"/>
+  <link rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic"/>
+  <link rel="http://schemas.google.com/g/2005#batch" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/batch"/>
+  <link rel="self" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic?max-results=25"/>
+  <author>
+    <name>Chris Lopes</name>
+    <email>christopher.lopes@gmail.com</email>
+  </author>
+  <generator version="1.0" uri="http://www.google.com/calendar">Google Calendar</generator>
+  <openSearch:totalResults>3</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <gCal:timezone value="America/Los_Angeles"/>
+  <gCal:timesCleaned value="0"/>
+  <gd:where valueString=""/>
+  <entry>
+    <id>http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/h6cdp0ocss5j3ka1atlr24vig0</id>
+    <published>2010-11-29T23:49:12.000Z</published>
+    <updated>2010-11-29T23:52:35.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title type="html">Phoenix Games</title>
+    <summary type="html">When: Wed Dec 1, 2010&lt;br&gt;
+
+&lt;br&gt;Where: everywhere
+&lt;br&gt;Event Status: confirmed</summary>
+    <content type="html">When: Wed Dec 1, 2010 10am to 10:30am 
+PST&lt;br /&gt;
+
+&lt;br /&gt;Where: everywhere
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: my desc</content>
+    <link rel="alternate" type="text/html" href="http://www.google.com/calendar/event?eid=aDZjZHAwb2NzczVqM2thMWF0bHIyNHZpZzAgNmJrcW43cjg1Z29qMTJxZTNwczFlMm5sdWdAZw" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/h6cdp0ocss5j3ka1atlr24vig0"/>
+    <author>
+      <name>Jeans Day</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/5gn4hu5cgcsk38v4k0j7et79ac</id>
+    <published>2010-11-29T18:56:13.000Z</published>
+    <updated>2010-11-29T18:56:13.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title type="html">Visa</title>
+    <summary type="html">When: Mon Nov 29, 2010&lt;br&gt;
+
+
+&lt;br&gt;Event Status: confirmed</summary>
+    <content type="html">When: Mon Nov 29, 2010&lt;br /&gt;
+
+
+&lt;br /&gt;Event Status: confirmed</content>
+    <link rel="alternate" type="text/html" href="http://www.google.com/calendar/event?eid=NWduNGh1NWNnY3NrMzh2NGswajdldDc5YWMgNmJrcW43cjg1Z29qMTJxZTNwczFlMm5sdWdAZw" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/5gn4hu5cgcsk38v4k0j7et79ac"/>
+    <author>
+      <name>Jeans Day</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/52taa6oq4ob22pu1d99cd0v5uk</id>
+    <published>2009-05-29T14:53:08.000Z</published>
+    <updated>2009-05-29T14:53:08.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title type="html">CU for Kids</title>
+    <summary type="html">When: Wed May 27, 2009&lt;br&gt;
+
+
+&lt;br&gt;Event Status: confirmed</summary>
+    <content type="html">When: Wed May 27, 2009&lt;br /&gt;
+
+
+&lt;br /&gt;Event Status: confirmed
+&lt;br /&gt;Event Description: Description for Jeans Day</content>
+    <link rel="alternate" type="text/html" href="http://www.google.com/calendar/event?eid=NTJ0YWE2b3E0b2IyMnB1MWQ5OWNkMHY1dWsgNmJrcW43cjg1Z29qMTJxZTNwczFlMm5sdWdAZw" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic/52taa6oq4ob22pu1d99cd0v5uk"/>
+    <author>
+      <name>Jeans Day</name>
+    </author>
+  </entry>
+</feed>
