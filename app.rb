@@ -5,6 +5,9 @@ require 'open-uri'
 require 'json'
 require 'date'
 
+get '/' do
+	redirect '/index.html'
+end
 
 get '/jeansday.json' do
 	content_type :json
