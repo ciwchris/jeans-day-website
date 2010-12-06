@@ -129,7 +129,7 @@ $(document).ready( function() {
 		  error: function() { $('.date').html('Sorry, could not make it happen'); }
 		});
 
-		$(".sliderWrapper").backgroundCanvas();
+		$(".canvasWrapper").backgroundCanvas();
 
 		$('#slider').bxSlider({
 			speed: 1000,
@@ -205,7 +205,7 @@ function getMonthName(monthNumber) {
 }
 
 function DrawBackground() {
-	$(".sliderWrapper").backgroundCanvasPaint(BackgroundPaintFkt);
+	$(".canvasWrapper").backgroundCanvasPaint(BackgroundPaintFkt);
 }
 
 $(window).load(function () { DrawBackground(); });
