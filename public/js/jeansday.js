@@ -118,9 +118,50 @@ this.each(function(){base.initShow();});return this;}})(jQuery);
 
 
 var jeanDates;
-var currentDate;
+var currentDate = new Date();
+var slider;
+var startSlide = 0;
+
 
 $(document).ready( function() {
+		slider = $('#slider').bxSlider({
+			speed: 700,
+			prevText: '',
+			nextText: '',
+			infiniteLoop: false,
+			hideControlOnEnd: true,
+			onBeforeSlide: function (currentSlideNumber) {
+			},
+			onNextSlide: function (currentSlideNumber) {
+				if (currentDate.getDay() == 5) {
+					slider.goToSlide(currentSlideNumber + 2);
+					currentDate.setDate((currentDate.getDate()+3));
+				} else {
+					if (currentDate.getDay() == 4 && currentSlideNumber > 10) {
+						$('.bx-next').removeClass('bx-next').addClass('bx-next-hide'); 
+					}
+					currentDate.setDate((currentDate.getDate()+1));
+				}
+			},
+			onPrevSlide: function (currentSlideNumber) {
+				if (currentDate.getDay() == 1) {
+					slider.goToSlide(currentSlideNumber - 2);
+					currentDate.setDate((currentDate.getDate()-3));
+				} else {
+					currentDate.setDate((currentDate.getDate()-1));
+				}
+				if (currentSlideNumber == startSlide) { $('.bx-prev').removeClass('bx-prev').addClass('bx-prev-hide'); }
+			},
+			onBeforeSlide: function (currentSlideNumber) {
+				if (currentSlideNumber > 11) { $('.bx-next').hide(); }
+				else { $('.bx-next-hide').removeClass('bx-next-hide').addClass('bx-next'); }
+			},
+			onAfterSlide: function (currentSlideNumber) {
+				if (currentSlideNumber == startSlide) { $('.bx-prev').hide(); }
+				else { $('.bx-prev-hide').removeClass('bx-prev-hide').addClass('bx-prev'); }
+			}
+		});
+
 	   $.ajax({
 		  type: "get",
 		  url: "jeansday.json",
@@ -130,43 +171,44 @@ $(document).ready( function() {
 		});
 
 		$(".canvasWrapper").backgroundCanvas();
-
-		$('#slider').bxSlider({
-			speed: 1000,
-			onNextSlide: function(currentSlideNumber) {
-				currentDate.setDate((currentDate.getDate()+1));
-				setAnswer(3);
-				setDay(3);
-				setAnswer(currentSlideNumber + 1);
-				setDay(currentSlideNumber + 1);
-			},
-			onPrevSlide: function(currentSlideNumber) {
-				currentDate.setDate((currentDate.getDate()-1));
-				setAnswer(0);
-				setDay(0);
-				setAnswer(currentSlideNumber + 1);
-				setDay(currentSlideNumber + 1);
-			}
-		});
 });
 
 function setDates(dates) {
+					currentDate.setDate((currentDate.getDate()+1));
 	jeanDates = dates;
+	for (var i = 1; i < 15; i++) {
+		setAnswer(i);
+		setDay(i);
+		currentDate.setDate((currentDate.getDate()+1));
+	}
 	currentDate = new Date();
-	setAnswer(1);
-	setDay(1);
+					currentDate.setDate((currentDate.getDate()+1));
+	if (currentDate.getDay() == 0) { moveFromWeekend(1); }
+	if (currentDate.getDay() == 6) { moveFromWeekend(2); }
+}
+
+function moveFromWeekend(day) {
+	slider.goToSlide(day);
+	startSlide = day;
+	$('.bx-prev').hide();
+	currentDate.setDate((currentDate.getDate()+day));
 }
 
 function setAnswer(index) {
-	var key = currentDate.getFullYear() + '-' + padDateNumber(currentDate.getMonth() +1) + '-' + padDateNumber(currentDate.getDate());
-	var answer; var title;
-	if (jeanDates[key] == undefined) {
-		answer = "No"; title = "";
+	if (currentDate.getDay() < 1 || currentDate.getDay() > 5) {
+		$('.answer:eq(' + index + ')').html('');
+		$('.title:eq(' + index + ')').html('');
 	} else {
-		answer = "Yes"; title = jeanDates[key];
+		var key = currentDate.getFullYear() + '-' + padDateNumber(currentDate.getMonth() +1) + '-' + padDateNumber(currentDate.getDate());
+		var answer; var title;
+		if (jeanDates[key] == undefined) {
+			answer = "No"; title = "";
+		} else {
+			answer = "Yes"; title = jeanDates[key];
+		}
+		$('.answer:eq(' + index + ')').html(answer);
+		$('.title:eq(' + index + ')').html(title);
 	}
-	$('.answer:eq(' + index + ')').html(answer);
-	$('.title:eq(' + index + ')').html(title);
 }
 
 function padDateNumber(dateNumber) {
