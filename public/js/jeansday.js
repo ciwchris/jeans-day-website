@@ -153,7 +153,7 @@ $(document).ready( function() {
 				if (currentSlideNumber == startSlide) { $('.bx-prev').removeClass('bx-prev').addClass('bx-prev-hide'); }
 			},
 			onBeforeSlide: function (currentSlideNumber) {
-				if (currentSlideNumber > 11) { $('.bx-next').hide(); }
+				if (currentSlideNumber > 10) { $('.bx-next').hide(); }
 				else { $('.bx-next-hide').removeClass('bx-next-hide').addClass('bx-next'); }
 			},
 			onAfterSlide: function (currentSlideNumber) {
@@ -174,7 +174,6 @@ $(document).ready( function() {
 });
 
 function setDates(dates) {
-					currentDate.setDate((currentDate.getDate()+1));
 	jeanDates = dates;
 	for (var i = 1; i < 15; i++) {
 		setAnswer(i);
@@ -182,7 +181,6 @@ function setDates(dates) {
 		currentDate.setDate((currentDate.getDate()+1));
 	}
 	currentDate = new Date();
-					currentDate.setDate((currentDate.getDate()+1));
 	if (currentDate.getDay() == 0) { moveFromWeekend(1); }
 	if (currentDate.getDay() == 6) { moveFromWeekend(2); }
 }
