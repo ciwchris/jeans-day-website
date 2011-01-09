@@ -167,16 +167,17 @@ $(document).ready( function() {
 		var startDate = theDate.getFullYear() + '-' + padDateNumber(theDate.getMonth() +1) + '-' + padDateNumber(theDate.getDate());
 		theDate.setDate(theDate.getDate() + 14);
 		var endDate = theDate.getFullYear() + '-' + padDateNumber(theDate.getMonth() +1) + '-' + padDateNumber(theDate.getDate());
-		($.gcalFeed('http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic'))(startDate,endDate,setDates);
+		($.gcalFeed('http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic'))(startDate,endDate,setDates,errorHandler);
 
 		$(".canvasWrapper").backgroundCanvas();
 });
 
+function errorHandler() {
+	$('.date').html('Sorry, could not make it happen');
+}
+
 function setDates(dates) {
-	jeanDates = new Array();
-	for (var i = 0; i < dates.length; i++) {
-		jeanDates[dates[i]["start"]] = dates[i]["title"];
-	}
+	jeanDates = dates;
 	for (var i = 1; i < 15; i++) {
 		setAnswer(i);
 		setDay(i);
@@ -212,7 +213,7 @@ function setAnswer(index) {
 }
 
 function padDateNumber(dateNumber) {
-	return dateNumber < 9 ? '0' + dateNumber : dateNumber;
+	return dateNumber < 10 ? '0' + dateNumber : dateNumber;
 }
 
 function setDay(index) {
