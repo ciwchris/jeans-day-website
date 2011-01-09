@@ -119,6 +119,7 @@ this.each(function(){base.initShow();});return this;}})(jQuery);
 
 var jeanDates;
 var currentDate = new Date();
+currentDate.setHours(0); currentDate.setMinutes(0); currentDate.setSeconds(0);
 var slider;
 var startSlide = 0;
 
@@ -162,25 +163,27 @@ $(document).ready( function() {
 			}
 		});
 
-	   $.ajax({
-		  type: "get",
-		  url: "jeansday.json",
-		  dataType: "json",
-		  success: function(data) { setDates(data); },
-		  error: function() { $('.date').html('Sorry, could not make it happen'); }
-		});
+		var theDate = new Date();
+		var startDate = theDate.getFullYear() + '-' + padDateNumber(theDate.getMonth() +1) + '-' + padDateNumber(theDate.getDate());
+		theDate.setDate(theDate.getDate() + 14);
+		var endDate = theDate.getFullYear() + '-' + padDateNumber(theDate.getMonth() +1) + '-' + padDateNumber(theDate.getDate());
+		($.gcalFeed('http://www.google.com/calendar/feeds/6bkqn7r85goj12qe3ps1e2nlug%40group.calendar.google.com/public/basic'))(startDate,endDate,setDates);
 
 		$(".canvasWrapper").backgroundCanvas();
 });
 
 function setDates(dates) {
-	jeanDates = dates;
+	jeanDates = new Array();
+	for (var i = 0; i < dates.length; i++) {
+		jeanDates[dates[i]["start"]] = dates[i]["title"];
+	}
 	for (var i = 1; i < 15; i++) {
 		setAnswer(i);
 		setDay(i);
 		currentDate.setDate((currentDate.getDate()+1));
 	}
-	currentDate = new Date();
+	currentDate = new Date()
+	currentDate.setHours(0); currentDate.setMinutes(0); currentDate.setSeconds(0);
 	if (currentDate.getDay() == 0) { moveFromWeekend(1); }
 	if (currentDate.getDay() == 6) { moveFromWeekend(2); }
 }
@@ -197,12 +200,11 @@ function setAnswer(index) {
 		$('.answer:eq(' + index + ')').html('');
 		$('.title:eq(' + index + ')').html('');
 	} else {
-		var key = currentDate.getFullYear() + '-' + padDateNumber(currentDate.getMonth() +1) + '-' + padDateNumber(currentDate.getDate());
 		var answer; var title;
-		if (jeanDates[key] == undefined) {
+		if (jeanDates[currentDate] == undefined) {
 			answer = "No"; title = "";
 		} else {
-			answer = "Yes"; title = jeanDates[key];
+			answer = "Yes"; title = jeanDates[currentDate];
 		}
 		$('.answer:eq(' + index + ')').html(answer);
 		$('.title:eq(' + index + ')').html(title);
