@@ -29,7 +29,7 @@
 				data: params,
 				dataType: 'json',
 				success: function(data) { createEvents(data, callback);},
-				error: function() { errorCallback(); },
+				error: function() { errorCallback(); }
 			});
 		}
 
