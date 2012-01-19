@@ -35,7 +35,7 @@ body { text-align: center; min-width: 500px; }
 	text-shadow: 4px 4px 4px #aaa;
 }
 
-.title {
+.title, .conditional {
 	font-family: 'Tangerine', serif;
 	font-size: 30pt;
 }

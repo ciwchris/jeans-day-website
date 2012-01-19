@@ -122,7 +122,22 @@ var currentDate = new Date();
 currentDate.setHours(0); currentDate.setMinutes(0); currentDate.setSeconds(0);
 var slider;
 var startSlide = 0;
+var conditionalDay = false;
 
+function checkForConditionalDay(text) {
+	console.log(text);
+	if (text.indexOf('ConditionalYes') > -1) {
+		if (!conditionalDay) {
+			conditionalDay = true;
+			$(".canvasWrapper").backgroundCanvasPaint(BackgroundPaintFkt);
+		}
+	} else {
+		if (conditionalDay) {
+			conditionalDay = false;
+			$(".canvasWrapper").backgroundCanvasPaint(BackgroundPaintFkt);
+		}
+	}
+}
 
 $(document).ready( function() {
 		slider = $('#slider').bxSlider({
@@ -133,7 +148,7 @@ $(document).ready( function() {
 			hideControlOnEnd: true,
 			onBeforeSlide: function (currentSlideNumber) {
 			},
-			onNextSlide: function (currentSlideNumber) {
+			onNextSlide: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
 				if (currentDate.getDay() == 5) {
 					slider.goToSlide(currentSlideNumber + 2);
 					currentDate.setDate((currentDate.getDate()+3));
@@ -143,8 +158,9 @@ $(document).ready( function() {
 					}
 					currentDate.setDate((currentDate.getDate()+1));
 				}
+				checkForConditionalDay(currentSlideHtmlObject.text());
 			},
-			onPrevSlide: function (currentSlideNumber) {
+			onPrevSlide: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
 				if (currentDate.getDay() == 1) {
 					slider.goToSlide(currentSlideNumber - 2);
 					currentDate.setDate((currentDate.getDate()-3));
@@ -152,6 +168,7 @@ $(document).ready( function() {
 					currentDate.setDate((currentDate.getDate()-1));
 				}
 				if (currentSlideNumber == startSlide) { $('.bx-prev').removeClass('bx-prev').addClass('bx-prev-hide'); }
+				checkForConditionalDay(currentSlideHtmlObject.text());
 			},
 			onBeforeSlide: function (currentSlideNumber) {
 				if (currentSlideNumber > 10) { $('.bx-next').hide(); }
@@ -201,11 +218,15 @@ function setAnswer(index) {
 		$('.answer:eq(' + index + ')').html('');
 		$('.title:eq(' + index + ')').html('');
 	} else {
-		var answer; var title;
+		var answer; var title; var conditional;
 		if (jeanDates[currentDate] == undefined) {
-			answer = "No"; title = "";
+			answer = "No"; title = ""; conditional = "";
 		} else {
-			answer = "Yes"; title = jeanDates[currentDate];
+			answer = "Yes"; title = jeanDates[currentDate].replace('*', '');
+			if (jeanDates[currentDate].indexOf('*') > -1) {
+				answer = '<div class="conditional">Conditional</div>' + answer;
+				$('.answer:eq(' + index + ')').attr('style','padding-top: 30px');
+			};
 		}
 		$('.answer:eq(' + index + ')').html(answer);
 		$('.title:eq(' + index + ')').html(title);
@@ -251,7 +272,7 @@ function DrawBackground() {
 	$(".canvasWrapper").backgroundCanvasPaint(BackgroundPaintFkt);
 }
 
-$(window).load(function () { DrawBackground(); });
+$(window).load(function () { checkForConditionalDay($('ul li.pager').first().text()); DrawBackground(); });
 $(window).resize(function() { DrawBackground(); });
 
 function BackgroundPaintFkt(context, width, height, elementInfo)
@@ -264,8 +285,14 @@ function BackgroundPaintFkt(context, width, height, elementInfo)
 
 	// Draw the gradient filled inner rectangle
 	var backgroundGradient = context.createLinearGradient(0, 0, 0, height - 10);
-	backgroundGradient.addColorStop(0 ,'#fff');
-	backgroundGradient.addColorStop(1, '#eee');
+	if (conditionalDay) {
+		backgroundGradient.addColorStop(0 ,'#ffe');
+		backgroundGradient.addColorStop(1, '#ee5');
+	} else {
+		backgroundGradient.addColorStop(0 ,'#fff');
+		backgroundGradient.addColorStop(1, '#eee');
+	}
+
 	options.border = 1;
 	context.fillStyle = backgroundGradient;
 	$.canvasPaint.roundedRect(context,options);
