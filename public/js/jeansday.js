@@ -125,7 +125,6 @@ var startSlide = 0;
 var conditionalDay = false;
 
 function checkForConditionalDay(text) {
-	console.log(text);
 	if (text.indexOf('ConditionalYes') > -1) {
 		if (!conditionalDay) {
 			conditionalDay = true;
